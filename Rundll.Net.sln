@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30011.22
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RunDLL.Net", "Rundll.Net\RunDLL.Net.csproj", "{E9E80AC7-4C13-45BD-9BDE-CA89AADF1294}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
+		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E9E80AC7-4C13-45BD-9BDE-CA89AADF1294}.Debug|Any CPU.ActiveCfg = Debug|x64
+		{E9E80AC7-4C13-45BD-9BDE-CA89AADF1294}.Debug|Any CPU.Build.0 = Debug|x64
+		{E9E80AC7-4C13-45BD-9BDE-CA89AADF1294}.Debug|x64.ActiveCfg = Debug|x64
+		{E9E80AC7-4C13-45BD-9BDE-CA89AADF1294}.Debug|x64.Build.0 = Debug|x64
+		{E9E80AC7-4C13-45BD-9BDE-CA89AADF1294}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E9E80AC7-4C13-45BD-9BDE-CA89AADF1294}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E9E80AC7-4C13-45BD-9BDE-CA89AADF1294}.Release|x64.ActiveCfg = Release|x64
+		{E9E80AC7-4C13-45BD-9BDE-CA89AADF1294}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B88A1491-E4EE-4B85-9C87-25383AEA9A40}
+	EndGlobalSection
+EndGlobal
