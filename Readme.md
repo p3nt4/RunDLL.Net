@@ -15,3 +15,4 @@ rundll32.exe Rundll.Net.dll,main C:\Temp\SharpSploit.dll SharpSploit.Enumeration
 
 ### How to
 To succesfully be loaded, classes and method invoked must be made public and static.
+DLL and EXE assemblies can be loaded.
