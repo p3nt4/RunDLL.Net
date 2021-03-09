@@ -1,2 +1,17 @@
- ## NuagesSharpImplant
- This is a demo implant that can be used for testing and reference.
+ ## RunDLL.Net
+Execute .Net assemblies using Rundll32.exe
+
+ ### Usage:
+```
+rundll32 rundll.Net.dll,main <assembly> <class> <method> [(type)][arg1] [(type)][arg2]...
+rundll32 rundll.Net.dll,main C:\Program.dll MyProgram.Program DoThing "Example string" (bool)true (int)3
+```
+
+ ### Examples:
+ ```
+rundll32.exe Rundll.Net.dll,main C:\Temp\SharpSploit.dll SharpSploit.Execution.Shell PowerShellExecute whoami (bool)true (bool)false (bool)false
+rundll32.exe Rundll.Net.dll,main C:\Temp\SharpSploit.dll SharpSploit.Enumeration.Keylogger StartKeylogger (int)3 
+ ```
+
+### How to
+To succesfully be loaded, classes and method invoked must be made public and static.
