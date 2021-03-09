@@ -3,8 +3,8 @@ Execute .Net assemblies using Rundll32.exe
 
  ### Usage:
 ```
-rundll32 rundll.Net.dll,main <assembly> <class> <method> [(type)][arg1] [(type)][arg2]...
-rundll32 rundll.Net.dll,main C:\Program.dll MyProgram.Program DoThing "Example string" (bool)true (int)3
+rundll32 Rundll.Net.dll,main <assembly> <class> <method> [(type)][arg1] [(type)][arg2]...
+rundll32 Rundll.Net.dll,main C:\Program.dll MyProgram.Program DoThing "Example string" (bool)true (int)3
 ```
 
  ### Examples:
