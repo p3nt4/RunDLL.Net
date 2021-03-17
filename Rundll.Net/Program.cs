@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Net;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -10,6 +11,7 @@ using RGiesecke.DllExport;
 
 namespace RunDLL.Net
 {
+
 
     public class utilConsole {
         [DllImport("kernel32.dll",
@@ -106,10 +108,36 @@ namespace RunDLL.Net
     public class Program
     {
 
+
         [DllExport("main", CallingConvention = CallingConvention.Cdecl)]
         public static void main(IntPtr hwnd, IntPtr hinst, string lpszCmdLine, int nCmdShow)
         {
             Main(lpszCmdLine.Split(' '));
+        }
+
+        static byte[] DownloadFile(string url)
+        {
+
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
+
+            request.Method = "GET";
+
+            UTF8Encoding encoding = new UTF8Encoding();
+
+            using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
+            {
+                using (Stream responseStream = response.GetResponseStream())
+                {
+                    MemoryStream ms = new MemoryStream();
+                    byte[] buffer = new byte[16384];
+                    int bytesRead;
+                    while ((bytesRead = responseStream.Read(buffer, 0, buffer.Length)) > 0)
+                    {
+                        ms.Write(buffer, 0, bytesRead);
+                    }
+                    return ms.ToArray();
+                }
+            }
         }
 
         static void Main(string[] args)
@@ -126,6 +154,7 @@ namespace RunDLL.Net
                     Console.WriteLine("");
                     Console.WriteLine("Example:");
                     Console.WriteLine("rundll32 rundll.Net.dll,main C:\\Program.dll MyProgram.Program DoThing \"Example string\" (bool)true (int)3");
+                    Console.WriteLine("rundll32 rundll.Net.dll,main http://website.com/Program.dll MyProgram.Program DoThing \"Example string\" (bool)true (int)3");
                     Console.ReadLine();
                     return;
                 }
@@ -136,9 +165,19 @@ namespace RunDLL.Net
                 }
 
                 string[] argStrings = utilConsole.parseArgs(argString);
+
+                Assembly a;
                 //Load the assembly
-                Console.WriteLine("[Assembly]   " + args[0]);
-                Assembly a = Assembly.LoadFile(args[0]);
+                if (args[0].StartsWith("http://") || args[0].StartsWith("https://"))
+                {
+                    byte[] bytes = DownloadFile(args[0]);
+                    a = Assembly.Load(bytes);
+                }
+                else
+                {
+                    Console.WriteLine("[Assembly]   " + args[0]);
+                    a = Assembly.LoadFile(args[0]);
+                }
 
                 // Get the type to use
                 Console.WriteLine("[Class]      " + args[1]);
